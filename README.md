@@ -35,7 +35,7 @@ npx eslint . --ext .js,.ts
 
 🚀 Prettier
 npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
-setting in vs workspace
+@setting in vs workspace.
 {
 "editor.defaultFormatter": "esbenp.prettier-vscode",
 "editor.formatOnSave": true
