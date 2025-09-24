@@ -17,6 +17,7 @@ export default class Server {
   }
 
   private middlewares() {}
+
   private routes() {
     appRoutes(this.app);
   }

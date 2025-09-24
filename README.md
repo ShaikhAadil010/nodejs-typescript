@@ -40,3 +40,8 @@ npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 "editor.defaultFormatter": "esbenp.prettier-vscode",
 "editor.formatOnSave": true
 }
+
+🎲 Set up Prisma ORM
+npm install prisma --save-dev // install prisma on existing project
+npx prisma //invoke prisma cli
+npx prisma init //setup provider
