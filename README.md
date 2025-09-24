@@ -2,19 +2,19 @@
 🔧 Core Dependencies
 
 npm install express cors dotenv helmet morgan
-| Package        | Description                                        |
+| Package | Description |
 | -------------- | -------------------------------------------------- |
-| ⚡ **express**  | Fast, unopinionated web framework for Node.js      |
-| 🔄 **cors**    | Middleware to enable Cross-Origin Resource Sharing |
-| 🔐 **dotenv**  | Loads environment variables from `.env` file       |
-| 🛡️ **helmet** | Secures Express apps by setting HTTP headers        |
-| 📜 **morgan**  | HTTP request logger middleware                     |
+| ⚡ **express** | Fast, unopinionated web framework for Node.js |
+| 🔄 **cors** | Middleware to enable Cross-Origin Resource Sharing |
+| 🔐 **dotenv** | Loads environment variables from `.env` file |
+| 🛡️ **helmet** | Secures Express apps by setting HTTP headers |
+| 📜 **morgan** | HTTP request logger middleware |
 
 🛠️ Development Dependencies
 npm install -D typescript ts-node @types/node @types/express @types/cors @types/morgan nodemon eslint @eslint/config@latest
 
 | Package                       | Description                                     |
-| ----------------------------- | ----------------------------------------------  |
+| ----------------------------- | ----------------------------------------------- |
 | 📝 **typescript**             | TypeScript compiler for static typing           |
 | ▶️ **ts-node**                | Run TypeScript files directly without compiling |
 | 🧩 **@types/node**            | Type definitions for Node.js                    |
@@ -28,3 +28,15 @@ npm install -D typescript ts-node @types/node @types/express @types/cors @types/
 ✨ With this setup:
 Use npm run dev for development (with nodemon + tsx)
 Use npm run build && npm start for production
+
+💁🏻 Eslint
+npx eslint
+npx eslint . --ext .js,.ts
+
+🚀 Prettier
+npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
+setting in vs workspace
+{
+"editor.defaultFormatter": "esbenp.prettier-vscode",
+"editor.formatOnSave": true
+}
