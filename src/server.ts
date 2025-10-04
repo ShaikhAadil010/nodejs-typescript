@@ -4,6 +4,9 @@ import 'dotenv/config';
 import { StatusCodes } from 'http-status-codes';
 import { appRoutes } from './globals/routes/appRoutes.js';
 import { MiddlewareHandler } from './globals/middlewares/middleware.js';
+import { error } from 'console';
+import { CustomError, NotFoundException } from './globals/cores/error.core.js';
+
 export default class Server {
   app: Application;
   constructor() {
@@ -20,15 +23,37 @@ export default class Server {
   private middlewares() {
     MiddlewareHandler(this.app);
   }
+
+  //Handling Global Application Routes
   private routes() {
     appRoutes(this.app);
   }
+
+  //Handling Global Errors Middleware
   private setupGlobalErrors() {
     this.app.use((req: Request, res: Response, next: NextFunction) => {
-      res
-        .status(StatusCodes.NOT_FOUND)
-        .json({ message: `Can't find ${req.originalUrl} on this server! 🚧` });
+      next(
+        new NotFoundException(
+          `Can't find ${req.originalUrl} on this server! 🚧`,
+        ),
+      );
     });
+
+    this.app.use(
+      (error: any, req: Request, res: Response, next: NextFunction) => {
+        if (error instanceof CustomError) {
+          res.status(error.statusCode).json({
+            message: error.message,
+          });
+          return;
+        }
+
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+          message: error.message || 'Something went wrong! 🚧',
+        });
+        return;
+      },
+    );
   }
 
   private listenServer() {
